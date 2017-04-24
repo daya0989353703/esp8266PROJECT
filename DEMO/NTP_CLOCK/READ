@@ -1,1 +1,18 @@
 
+ESP-01搭配LCD1602_I2C製作網路時鐘
+
+LCD1602_I2C在arduino已有LiquidCrystal_I2C函式庫可用,不過在ESP-01上面並不適用,GOOGLE一下網路上已有大德改寫完成,網址如下:
+
+https://github.com/agnunez/ESP8266-I2C-LCD1602
+
+請先下載函式庫解壓到arduino底下的library資料夾,命名為LiquidCrystal_I2C
+
+裡面附了範例程式,先打開arduino主程式,從檔案>>範例>>LiquidCrystal_I2C>>ESP8266I2CLCD
+
+範例程式如下:其中較重要的說明是SDA接到ESP-01的GPIO0;SCL接到GPIO2
+
+再來,開啟另外一個範例程式,檔案>>範例>>ESP8266WIFI>>NTPClient,這是ESP8266取得網路時間的範例檔
+
+範例是使用電腦序列埠來顯示時間,不過我們這裡是把ESP-01當作主控板,並不會連接到電腦,所以底下那一堆serial.print()都要刪掉,改用lcd.print()
+
+參考教學網址:http://pm25.tn.edu.tw/xoops/modules/tad_book3/page.php?tbdsn=41
